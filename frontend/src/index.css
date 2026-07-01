@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #f0f3ff;
+  --color-brand-100: #e1e7ff;
+  --color-brand-200: #c8d3ff;
+  --color-brand-300: #a3b4ff;
+  --color-brand-400: #798dff;
+  --color-brand-500: #5465ff; /* Primary */
+  --color-brand-600: #3b43f4;
+  --color-brand-700: #2d30df;
+  --color-brand-800: #2628b4;
+  --color-brand-900: #23278f;
+
+  --color-dark-50: #f6f6f9;
+  --color-dark-100: #eef0f5;
+  --color-dark-200: #d9deea;
+  --color-dark-300: #b8c3da;
+  --color-dark-400: #91a2c5;
+  --color-dark-500: #7285b0;
+  --color-dark-600: #596b99;
+  --color-dark-700: #48557e;
+  --color-dark-800: #2f3752;
+  --color-dark-900: #1b1f32; /* Dark background */
+  --color-dark-950: #0f111d;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+
+  --animate-fade-in: fadeIn 0.5s ease-out;
+  --animate-slide-up: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-pulse-subtle: pulseSubtle 2s infinite ease-in-out;
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes slideUp {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes pulseSubtle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.85; transform: scale(1.02); }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-dark-950 text-dark-100 font-sans antialiased;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(84, 101, 255, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(121, 141, 255, 0.03) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-dark-50 font-semibold tracking-tight;
+  }
+}
+
+/* Glassmorphism utility card class */
+.glass-card {
+  background: rgba(27, 31, 50, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-card-hover {
+  @apply transition-all duration-300 ease-out;
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-4px);
+  background: rgba(27, 31, 50, 0.8);
+  border-color: rgba(84, 101, 255, 0.25);
+  box-shadow: 0 12px 30px -10px rgba(84, 101, 255, 0.15);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-950;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-dark-800 rounded-full transition-colors duration-200;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-brand-500;
+}
+
+/* Glowing text and buttons */
+.glow-text-brand {
+  text-shadow: 0 0 20px rgba(84, 101, 255, 0.4);
+}
+
+.glow-shadow-brand {
+  box-shadow: 0 0 30px -5px rgba(84, 101, 255, 0.3);
+}
+
+.glow-shadow-brand-sm {
+  box-shadow: 0 0 15px -3px rgba(84, 101, 255, 0.2);
+}
+
+/* Shimmer animation for loading states */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.shimmer-effect::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.03) 20%,
+    rgba(255, 255, 255, 0.08) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 2s infinite;
+  content: '';
+}
