@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from app.database.mongodb import init_db, close_db
 from app.routes import auth, interview, report
+from app.routes import feedback
 from app.config import settings
 
 # Setup logging
@@ -58,6 +59,7 @@ async def global_exception_handler(request: Request, exc: Exception):
 app.include_router(auth.router)
 app.include_router(interview.router)
 app.include_router(report.router)
+app.include_router(feedback.router)
 
 @app.get("/")
 async def root():

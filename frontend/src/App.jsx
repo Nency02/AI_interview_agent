@@ -8,6 +8,7 @@ import StartInterview from './pages/StartInterview';
 import Interview from './pages/Interview';
 import Results from './pages/Results';
 import HistoryPage from './pages/History';
+import FeedbackPage from './pages/Feedback';
 import Navbar from './components/Navbar';
 
 // Route protector
@@ -118,6 +119,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <HistoryPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/feedback"
+            element={
+              <ProtectedRoute>
+                <FeedbackPage />
               </ProtectedRoute>
             }
           />

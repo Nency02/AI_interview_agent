@@ -2,7 +2,6 @@ from bson import ObjectId
 from datetime import datetime
 from fastapi import APIRouter, HTTPException, Depends, status
 from typing import List, Dict, Any, Optional
-
 from app.database.mongodb import get_collection
 from app.models.user import UserResponse
 from app.services.auth_service import get_current_user
@@ -168,7 +167,7 @@ async def submit_answer(
         }
         report_result = await reports_col.insert_one(report_doc)
         report_id = str(report_result.inserted_id)
-        
+    
         # Update session status
         await sessions_col.update_one(
             {"_id": ObjectId(request.interview_id)},

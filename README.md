@@ -71,15 +71,16 @@ AI_interview_coach/
    ```env
    GROQ_API_KEY=gsk_...
    ```
-2. Navigate to the `backend/` directory in your terminal:
+2. If you use Gmail for SMTP, set `SMTP_PASSWORD` to a Google App Password, not your normal Gmail password. Gmail rejects standard passwords for SMTP unless the account uses an app password and 2-Step Verification is enabled.
+3. Navigate to the `backend/` directory in your terminal:
    ```bash
    cd backend
    ```
-3. Create a Python virtual environment:
+4. Create a Python virtual environment:
    ```bash
    python -m venv venv
    ```
-4. Activate the virtual environment:
+5. Activate the virtual environment:
    - **Windows (PowerShell)**:
      ```powershell
      .\venv\Scripts\Activate.ps1
@@ -88,11 +89,11 @@ AI_interview_coach/
      ```bash
      source venv/bin/activate
      ```
-5. Install python packages:
+6. Install python packages:
    ```bash
    pip install -r requirements.txt
    ```
-6. Start the FastAPI backend server:
+7. Start the FastAPI backend server:
    ```bash
    uvicorn app.main:app --reload
    ```
